@@ -1,0 +1,18 @@
+<mat-toolbar color="#435261">
+    <mat-toolbar-row>
+        <span>
+            <nav>
+                <ul>
+                    <div class="link-ease-in-out">
+                        <li class="nav-list-item" *ngFor="let item of getMenuItems()">
+                            <a class="nav-link" [routerLink]="item.route" [textContent]="item.text"
+                                *ngIf="item.permissionLevel<=getUserPermission()"></a>
+                        </li>
+                    </div>
+                </ul>
+            </nav>
+        </span>
+        <span class="example-spacer"></span>
+
+    </mat-toolbar-row>
+</mat-toolbar>

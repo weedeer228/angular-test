@@ -1,0 +1,45 @@
+<form [formGroup]="userForm">
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-10">
+                <div class="d-flex justify-content-between align-items-center mb-5">
+                    <h2 class="text-right">Profile Settings</h2>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-12 mt-3 d-flex"><label class="labels">Email: &#160;</label>
+                        <p type="text" class="labels" [textContent]="currentUser.email"></p>
+                    </div>
+                    <div class="col-md-12 mt-3">
+                        <label class="labels">Firstname</label>
+                        <input type="text" class="form-control mt-1" id="firstName" name="firstName"
+                            placeholder="first name" formControlName="firstName" max="255" required>
+                        >
+                        <div class="error" *ngIf="submitted && form['firstName'].errors">Firstname is required</div>
+                    </div>
+                    <div class="col-md-12 mt-3">
+                        <label class="labels">Lastname</label>
+                        <input type="text" class="form-control mt-1" value="" placeholder="surname"
+                            formControlName="lastName">
+                        <div class="error" *ngIf="submitted && form['lastName'].errors">Lastname is required</div>
+                    </div>
+                </div>
+                <div class="row mt-3 ">
+                    <div class="col-md-12"><label class="labels">Mobile Number</label>
+                        <div class="d-flex align-items-center">
+                            <label class="labels mt-4">+7 &#160;</label>
+                            <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                height="15" minlength="10" maxlength="10" pattern="\+?[0-9\s\-\(\)]+"
+                                class="form-control mt-2" placeholder="enter phone number" formControlName="phone">
+                        </div>
+                        <div class="error" *ngIf="submitted && form['phone'].errors">phone is required</div>
+                    </div>
+                    <div class="col-md-12 mt-3"><label class="labels">Website</label><input type="text"
+                            class="form-control mt-1" placeholder="enter website" value="" formControlName="url"></div>
+                </div>
+                <div class="mt-5 text-left"><button class="btn btn-primary profile-button" type="button"
+                        routerLinkActive="router-link-active" (click)="saveChanges()">Save
+                        Profile</button></div>
+            </div>
+        </div>
+    </div>
+</form>
